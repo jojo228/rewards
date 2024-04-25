@@ -1,0 +1,113 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+        <!-- Main Wrapper-->
+        <main class="wrapper">
+            <!-- Page Header -->
+            <div class="wptb-page-heading" style="background-image: url('{% static 'assets/img/background/page-header-bg.jpg'%}');">
+                <div class="container">
+                    <div class="wptb-item--inner">
+                        <h2 class="wptb-item--title ">Product List</h2>
+                        <div class="wptb-breadcrumb-wrap">
+                            <ul class="wptb-breadcrumb">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Pages</a></li>
+                                <li><span>Product List</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Pricing Packages -->
+                <section class="wptb-pricing-package-one">
+                    <div class="container">
+                        <div class="wptb-heading">
+                            <div class="wptb-item--inner text-center">
+                                
+                                <h1 class="wptb-item--title"> <span>Get the best price For every <br>
+                                    Product</span></h1>
+                            </div>
+                        </div>
+                        
+                        {% for product in products %}
+                        <div class="wptb-packages1 active highlight wow fadeInLeft">
+                            <div class="wptb-item--inner">
+                                <div class="wptb-item--left-part">
+                                    <div class="wptb-item--holder">
+                                        <!-- <h6 class="wptb-item--category"><a href="#">NUT</a></h6> -->
+                                        <h4 class="wptb-item--title"><a href="#">{{product.name}}</a></h4>
+                                        <p class="wptb-item--description"> {{product.description}}</p>
+                                    </div>
+        
+                                    <div class="wptb-item--image">
+                                        <a href="#" class="wptb-item-link"><img src="{% static 'assets/img/packages/1.jpeg'  %}" alt="img"></a>
+                                    </div>
+                                </div>
+    
+                                <div class="wptb-item--right-part">
+                                    <div class="wptb-list1">
+                                        {% for spec in product.get_all_specifications %}
+                                        <div class="wptb--item wow skewIn animated">
+                                            <div class="wptb-item--icon"><i class="bi bi-check"></i></div>
+                                            <div class="wptb-item--text">{{spec}}</div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+        
+                                    <div class="wptb-item--price">
+                                        <span class="wptb-service-price">{{product.price}} XOF</span> <span class="wptb-service-price-for">Per Ton</span>
+                                        <div class="wptb-item--button">
+                                            
+                                            <a class="btn--readmore" href="{% url 'product_detail' product.id %}"> 
+                                                <span class="btn-readmore--text"> Details </span> 
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+    
+                
+                        <div class="wptb-pagination-wrap text-center">
+                            <ul class="pagination">
+                                <li><a class="disabled page-number previous" href="#"><i class="bi bi-chevron-left"></i></a></li>
+                                <li><span class="page-number current">1</span></li>
+                                <li><a class="page-number" href="#">2</a></li>
+                                <li><a class="page-number" href="#">3</a></li>
+                                <li>.....</li>
+                                <li><a class="page-number" href="#">9</a></li>
+                                <li><a class="page-number next" href="#"><i class="bi bi-chevron-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+            <!-- Newsletter -->
+            <div class="wptb-newsletter bg-image" style="background-image: url('{% static 'assets/img/background/bg-16.jpg' %}');">
+                <div class="container">
+                    <div class="wptb-item--inner">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <h1 class="wptb-item--title wow fadeInLeft">Subscribe To rewards 
+                                    For All the offers</h1>
+                            </div>
+                            <div class="col-md-6">
+                                <form class="newsletter-form" method="post">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                                    </div>
+                                    <button type="submit" class="btn-readmore style-icon">
+                                        <span class="btn-readmore--icon"> <i class="bi bi-send"></i> </span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        {% endblock %}

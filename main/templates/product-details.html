@@ -1,0 +1,199 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+        <!-- Main Wrapper-->
+        <main class="wrapper">
+            <!-- Page Header -->
+            <div class="wptb-page-heading" style="background-image: url('{% static 'assets/img/background/page-header-bg.jpg' %}');">
+                <div class="container">
+                    <div class="wptb-item--inner">
+                        <h2 class="wptb-item--title ">{{product.name}}</h2>
+                        <div class="wptb-breadcrumb-wrap">
+                            <ul class="wptb-breadcrumb">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Pages</a></li>
+                                <li><span>Product Details</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<!-- Details Content -->
+			<section class="blog-details">
+				<div class="container">
+					<div class="row">
+                            
+                        <!-- Service Navigation List -->
+                        <div class="col-lg-4 col-md-5 pe-md-5">
+                            <div class="sidebar">
+                                <div class="sidenav">
+                                    <ul class="side_menu">
+                                        {% for product in products %}
+										<li class="menu-item">
+											<a href="{% url 'product_detail' product.id %}" class="d-flex align-items-center justify-content-between">
+                                                <span>
+                                                    {{product.name}}
+                                                </span>
+                                                <i class="bi bi-chevron-right"></i>
+											</a>
+										</li>
+                                        {% endfor %}
+									</ul>
+                                </div>                              
+
+                                <div class="wptb-banner2 mr-top-30"> 
+                                    <div class="wptb-banner-inner"> 
+                                        <a class="wptb-item--link" href="tel:23456781199"></a>
+                                        <div class="wptb-item--image">
+                                            <div class="wptb-item-img-primary " data-wow-delay="ms"> 
+                                                <img src="{% static 'assets/img/more/banner.jpg' %}" alt="">
+                                            </div>
+                                        </div>
+                                
+                                        <div class="wptb-wrap-content">
+                                            <div class="wptb-wrap-shape"> 
+                                                <svg class="wptb-svg-1" width="422" height="328" viewBox="0 0 422 328" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0.287109 240.142C20.2871 205.285 96.63 135.228 242.001 133.856C385.076 132.507 421.433 46.9123 422.001 2.26061V0.14209C422.01 0.837364 422.011 1.54371 422.001 2.26061V327.571H0.287109V240.142Z"></path>
+                                                </svg>
+                                                <svg class="wptb-svg-2" width="422" height="329" viewBox="0 0 422 329" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M199.142 146.428C96.2852 139.571 23.7137 193.857 0.285156 221.857V328.142H421.999V0.713623C387.714 112.142 327.714 154.999 199.142 146.428Z"></path>
+                                                </svg>
+                                            </div>
+                                        <div class="wptb-content">
+                                            <div class="wptb-item--title">Get A Quote</div>
+                                            <div class="wptb-item-contact-info">
+                                                    <div class="wptb-item--icon"> 
+                                                        <i class="bi bi-telephone-fill"></i>
+                                                    </div> 
+                                                    <span class="wptb-item--desc">Need Help? Call Whatsapp Us</span>
+                                                    <h5 class="wptb-item--number">+228 90 74 33 84</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-md-7 mt-5 mt-md-0">
+                            <div class="blog-details-inner">
+                                <div class="post-content">
+                                    <div class="post-header mt-0">
+                                        <h1 class="post-title">{{product.name}}</h1>
+                                    </div>
+                                    <div class="fulltext">
+                                        <p> {{product.description}}</p>
+                                        <h5 class="highlight">{{product.price}} XOF / ton</h5>
+
+                                        
+
+                                        <p>Following are it's specifications:</p>
+                                        <ul class="point-order">
+                                            {% for spec in product.get_all_specifications %}
+                                            <li>{{spec}}</li>
+                                            {% endfor %}
+                                        </ul>
+
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6">
+                                                <div class="image-post">
+                                                    <img src="{{product.first_photo}}" alt="img">
+                                                </div>
+                                            </div>
+                                            {% for photo in product.get_next_four_photos %}
+                                            <div class="col-lg-6 col-sm-6">
+                                               
+                                                <div class="image-post">
+                                                    <img src="{{photo.file.url}}" alt="img">
+                                                </div>
+                                                
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        <div class="wptb-accordion wptb-accordion2 wow fadeInUp">
+                                            <div class="wptb--item active">
+                                                <h6 class="wptb-item-title"><span>NOTIFICATION TO CUSTOMERS</span> <i class="plus bi bi-plus"></i> <i class="minus bi bi-dash"></i></h6>
+                                                <div class="wptb-item--content">
+                                                    In order to keep pace with never ending demands of customers, our company is involved in offering an excellent quality array of Togo, Ghana, Benin, Burkina, Niger and Mali agricultural raw materials packed hygienically under the natural conditions. Furthermore, to get the maximum satisfaction of the customers, we provide these products at the most affordable and competitive price with below details:
+                                                    <br>
+                                                    <br>
+                                                    <ul class="point-order">
+                                                        <li>Trade Process: FOB/CFR</li>
+                                                        <li>Loading Port: Lomé – Togo</li>
+                                                        <li>Payment Method: 70% TT on signing contract and 30% after container load (We sometimes work on LC payment as well)</li>
+                                                        <li>Shipping Time: 15 to 25 days after confirmation of advance payment or L/C by our bank.</li>
+                                                        <li>Quantity: Based On Buyer’s Specification</li>
+                                                    </ul>
+                                                    <br>
+                                                    <b>Expected Shipping Documents</b>
+                                                    <ul class="point-order">
+                                                        <li>1. Bill of Lading</li>
+                                                        <li>2. Certificate of Origin</li>
+                                                        <li>3. Phytosanitary Certificate</li>
+                                                        <li>4. Fumigation Certificate</li>
+                                                        <li>5. Commercial Invoice</li>
+                                                        <li>6. Packing List</li>
+                                                        <li>7. LDC certificate (in Demand by the customer)</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                    
+                                            <div class="wptb--item">
+                                                <h6 class="wptb-item-title"><span>OUR TRADE PROCESS</span> <i class="plus bi bi-plus"></i> <i class="minus bi bi-dash"></i></h6>
+                                                <div class="wptb-item--content">
+                                                    Our trade process spreads across CFR and FOB depending on the buyer’s preference as follow:
+                                                    <br>
+                                                    <ul class="point-order">
+                                                        <li><b>Cost and Freight (CFR)</b>
+                                                            <br>
+                                                            The seller here will handle everything from loading the vessel and shipping the product to wherever the buyer wants it delivered.
+                                                        </li>
+                                                        <li><b>Freight On Board (FOB)</b>
+                                                            <br>
+                                                            The seller here pays for the transportation of the goods to the port of shipment, plus loading costs, while the buyer pays the cost of marine freight transport, insurance, unloading, and transportation from the originating port to the final destination.                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                    
+                                            <div class="wptb--item">
+                                                <h6 class="wptb-item-title"><span>QUALITY CONTROL</span> <i class="plus bi bi-plus"></i> <i class="minus bi bi-dash"></i></h6>
+                                                <div class="wptb-item--content">
+                                                    In an organization that is focused on the supply of various raw agricultural and food products, quality performs an incredibly essential aspect, and this has always been a key priority for our company. From the very beginning of our business, we have continuously committed to delivering high quality Raw Agricultural Materials like Raw Cashew Nuts, Cashew Kernel, Soybean, Sesame, Dry Ginger, Peanuts, Cassava Flour, Sheanuts to our valuable customers. <br> When it comes to the quality of our products listed above, we are a trustworthy company as we source these from well-known suppliers. Furthermore, we are supported by a highly qualified quality management team that carries out various quality tests before the items are packaged and delivered.
+                                                </div>
+                                            </div>
+                    
+                                            <div class="wptb--item">
+                                                <h6 class="wptb-item-title"><span>CUSTOMER SATISFACTION</span> <i class="plus bi bi-plus"></i> <i class="minus bi bi-dash"></i></h6>
+                                                <div class="wptb-item--content">
+                                                    Customer satisfaction has been the most important factor for our organization and we undertake all necessary measures to recognize and fulfill their expectations that will ultimately lead to their satisfaction. Typically, we constantly take the given factors into consideration while dealing with our clients:
+                                                    <br>
+                                                    <br>
+                                                    <ul class="point-order">
+                                                        <li>We pay attention to what demands of customers are and seek to deliver them the perfect solution.</li>
+                                                        <li>We ensure absolute respect, integrity and openness with any client who associates with us.</li>
+                                                        <li>We guarantee that the items supplied to the customers are carefully examined to be in compliance with the food grade standards.</li>
+                                                        <li>We ensure that all orders are packaged safely and transported to the respective customers within the time period discussed.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                       
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+				</div>
+			</section>
+			<!-- End Details Content -->
+			
+		</main>
+
+        {% endblock %}
