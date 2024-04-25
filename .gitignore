@@ -223,7 +223,6 @@ local_settings.py
 .venv
 db.sqlite3
 
-/migrations/
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -266,10 +265,11 @@ venv.bak/
 
 *.sqlite3
 
-migrations/
 
 # Directory
 */files/
 
 # Json
 *.json
+*/rewards/settings.py
+/rewards/settings.py
